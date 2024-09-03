@@ -14,8 +14,8 @@ import ru.practicum.shareit.item.model.Item;
 
 @Repository
 public class ItemRepositoryImpl implements ItemRepository {
-    HashMap<Long, Item> internalStorage = new HashMap<>();
-    HashMap<Long, List<Long>> userIndex = new HashMap<>();
+    private final HashMap<Long, Item> internalStorage = new HashMap<>();
+    private final HashMap<Long, List<Long>> userIndex = new HashMap<>();
     private Long newId = 1L;
 
     @Override

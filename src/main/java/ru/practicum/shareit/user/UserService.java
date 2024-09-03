@@ -2,10 +2,8 @@ package ru.practicum.shareit.user;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
 import ru.practicum.shareit.user.dto.UserDto;
 
-@Service
 public interface UserService {
     List<UserDto> getAllUsers();
 

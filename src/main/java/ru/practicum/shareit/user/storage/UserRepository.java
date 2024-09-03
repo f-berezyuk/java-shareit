@@ -2,10 +2,8 @@ package ru.practicum.shareit.user.storage;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
 import ru.practicum.shareit.user.model.User;
 
-@Repository
 public interface UserRepository {
     List<User> findAll();
 

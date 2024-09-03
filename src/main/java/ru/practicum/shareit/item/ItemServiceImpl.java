@@ -16,9 +16,9 @@ import ru.practicum.shareit.user.exception.UserNotFoundException;
 @Service
 @AllArgsConstructor
 public class ItemServiceImpl implements ItemService {
-    private ItemRepository repository;
+    private final ItemRepository repository;
 
-    private UserService userService;
+    private final UserService userService;
 
     @Override
     public ItemDto createItem(Long userId, ItemDto itemDto) {

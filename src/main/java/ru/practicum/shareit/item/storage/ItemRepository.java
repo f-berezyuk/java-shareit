@@ -2,10 +2,8 @@ package ru.practicum.shareit.item.storage;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
 import ru.practicum.shareit.item.model.Item;
 
-@Repository
 public interface ItemRepository {
     Item add(Item newItem);
 
