@@ -92,9 +92,11 @@ public class ItemServiceImpl implements ItemService {
     public CommentDto commentItem(Long itemId, Long authorId, String text) {
         Item item = getOrThrow(itemId);
         User author = UserMapper.toEntity(userService.getUser(authorId));
-        boolean empty = bookingRepository.findAllByBookerIdAndItemIdAndStatusAndEndAtBefore
-                (authorId, itemId, EBookingStatus.APPROVED, Timestamp.valueOf(LocalDateTime.now())).isEmpty();
-        if (empty) {
+        if (bookingRepository.findAllByBookerIdAndItemIdAndStatusAndEndAtBefore(authorId,
+                        itemId,
+                        EBookingStatus.APPROVED,
+                        Timestamp.valueOf(LocalDateTime.now()))
+                .isEmpty()) {
             throw new BookingNotFoundException("Пользователь не арендовал данный предмет");
         }
         Comment comment = Comment.builder()

@@ -15,6 +15,8 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findAllByBookerId(Long userId);
 
     @Query("select b from Booking b where b.booker.id = ?1 and b.item.id = ?2 and b.status = ?3 and b.endAt < ?4")
-    List<Booking> findAllByBookerIdAndItemIdAndStatusAndEndAtBefore(Long bookerId, Long itemId, EBookingStatus status
-            , Timestamp before);
+    List<Booking> findAllByBookerIdAndItemIdAndStatusAndEndAtBefore(Long bookerId,
+                                                                    Long itemId,
+                                                                    EBookingStatus status,
+                                                                    Timestamp before);
 }
