@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS items
     owner_id    BIGINT                                  NOT NULL,
     name        VARCHAR(255)                            NOT NULL,
     description VARCHAR(512)                            NOT NULL,
+    available   boolean DEFAULT FALSE,
     CONSTRAINT pk_item PRIMARY KEY (id),
     CONSTRAINT fk_owner FOREIGN KEY (owner_id) REFERENCES users (id) ON DELETE CASCADE
 );
