@@ -2,6 +2,7 @@ package ru.practicum.shareit.item;
 
 import java.util.List;
 
+import ru.practicum.shareit.item.dto.CommentDto;
 import ru.practicum.shareit.item.dto.ItemDto;
 import ru.practicum.shareit.item.exception.UserNotAuthorizedException;
 
@@ -17,4 +18,6 @@ public interface ItemService {
     List<ItemDto> findAllByUser(Long userId);
 
     List<ItemDto> findItemsByText(String text);
+
+    CommentDto commentItem(Long itemId, Long authorId, String text);
 }
