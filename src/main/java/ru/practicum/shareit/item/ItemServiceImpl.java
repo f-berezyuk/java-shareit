@@ -9,7 +9,6 @@ import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.practicum.shareit.booking.EBookingStatus;
-import ru.practicum.shareit.booking.exception.BookingNotFoundException;
 import ru.practicum.shareit.booking.storage.BookingRepository;
 import ru.practicum.shareit.item.dto.CommentDto;
 import ru.practicum.shareit.item.dto.ItemDto;
@@ -97,7 +96,7 @@ public class ItemServiceImpl implements ItemService {
                         EBookingStatus.APPROVED,
                         Timestamp.valueOf(LocalDateTime.now()))
                 .isEmpty()) {
-            throw new BookingNotFoundException("Пользователь не арендовал данный предмет");
+            throw new UserNotAuthorizedException("Пользователь не арендовал данный предмет");
         }
         Comment comment = Comment.builder()
                 .author(author)

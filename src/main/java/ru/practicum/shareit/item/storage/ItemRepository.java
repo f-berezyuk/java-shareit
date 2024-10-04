@@ -21,7 +21,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     @Query("SELECT CASE WHEN COUNT(b) > 0 THEN TRUE ELSE FALSE END " +
             "FROM Booking b " +
-            "WHERE b.id = :itemId " +
+            "WHERE b.item.id = :itemId " +
             "AND (:startAt BETWEEN b.startAt AND b.endAt " +
             "OR :endAt BETWEEN b.startAt AND b.endAt " +
             "OR (b.startAt BETWEEN :startAt AND :endAt) " +

@@ -51,12 +51,12 @@ public class BookingServiceImpl implements BookingService {
         Item item = itemRepository.findById(itemId)
                 .orElseThrow(() -> new ItemNotFoundException("Предмет не найден."));
 
+        User booker = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("Не смог найти пользователя с id [" + userId + "]."));
+
         if (!item.getAvailable()) {
             throw new ValidationException("Предмет недоступен для бронирования.");
         }
-
-        User booker = userRepository.findById(userId)
-                .orElseThrow(() -> new UserNotFoundException("Не смог найти пользователя с id [" + userId + "]."));
         Timestamp startAt = Timestamp.valueOf(start);
         Timestamp endAt = Timestamp.valueOf(end);
         Booking booking = Booking.builder()
