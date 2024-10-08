@@ -30,7 +30,7 @@ class UserServiceImpl implements UserService {
     public UserDto saveUser(UserDto userDto) {
         checkEmail(userDto);
         User user = UserMapper.toEntity(userDto);
-        return UserMapper.toDto(repository.add(user));
+        return UserMapper.toDto(repository.save(user));
     }
 
     @Override
@@ -42,7 +42,7 @@ class UserServiceImpl implements UserService {
         oldUser.setName(Optional.ofNullable(userDto.getName()).orElse(oldUser.getName()));
         oldUser.setEmail(Optional.ofNullable(userDto.getEmail()).orElse(oldUser.getEmail()));
 
-        User user = repository.updateById(userId, oldUser);
+        User user = repository.save(oldUser);
 
         return UserMapper.toDto(user);
     }
@@ -56,16 +56,17 @@ class UserServiceImpl implements UserService {
     }
 
     private User getOrThrow(Long userId) {
-        User user = repository.findById(userId);
-        if (user != null) {
-            return user;
+        Optional<User> user = repository.findById(userId);
+        if (user.isPresent()) {
+            return user.get();
         }
 
         throw new UserNotFoundException("Пользователь с идентификатором " + userId + " не найден");
     }
 
     private void checkEmail(UserDto userDto) {
-        if (repository.findByEmail(userDto.getEmail()) != null) {
+        User user = repository.findByEmailIgnoreCase(userDto.getEmail());
+        if (user != null) {
             throw new UserEmailDuplicateException(
                     "Пользователь с email " + userDto.getEmail() + " уже зарегистрирован.");
         }
