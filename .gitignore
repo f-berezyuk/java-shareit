@@ -32,3 +32,17 @@ build/
 ### VS Code ###
 .vscode/
 /postman/
+/volumes/postgres/base/
+/volumes/postgres/global/
+/volumes/postgres/pg_logical/
+/volumes/postgres/pg_multixact/
+/volumes/postgres/pg_stat/
+/volumes/postgres/pg_subtrans/
+/volumes/postgres/pg_wal/
+/volumes/postgres/pg_xact/
+/volumes/postgres/pg_hba.conf
+/volumes/postgres/pg_ident.conf
+/volumes/postgres/PG_VERSION
+/volumes/postgres/postgresql.auto.conf
+/volumes/postgres/postgresql.conf
+/volumes/postgres/postmaster.opts
