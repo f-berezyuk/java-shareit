@@ -55,7 +55,8 @@ class UserServiceImpl implements UserService {
         return UserMapper.toDto(removed);
     }
 
-    private User getOrThrow(Long userId) {
+    @Override
+    public User getOrThrow(Long userId) {
         Optional<User> user = repository.findById(userId);
         if (user.isPresent()) {
             return user.get();

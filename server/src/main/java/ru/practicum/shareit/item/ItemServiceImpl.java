@@ -50,7 +50,8 @@ public class ItemServiceImpl implements ItemService {
         }
     }
 
-    private Item getOrThrow(Long itemId) {
+    @Override
+    public Item getOrThrow(Long itemId) {
         Optional<Item> user = repository.findById(itemId);
         if (user.isPresent()) {
             return user.get();
