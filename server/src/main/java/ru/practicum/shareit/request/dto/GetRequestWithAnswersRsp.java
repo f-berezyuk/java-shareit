@@ -10,11 +10,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class ItemRequestDto {
-    private Long id;
-    private String description;
-    private LocalDateTime created;
-    private List<AnswerDto> items;
+@AllArgsConstructor
+public class GetRequestWithAnswersRsp {
+    Long id;
+    String description;
+    LocalDateTime createdAt;
+    List<AnswerDto> items;
 }
+
