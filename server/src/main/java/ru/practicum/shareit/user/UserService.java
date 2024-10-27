@@ -7,7 +7,9 @@ import ru.practicum.shareit.user.model.User;
 
 public interface UserService {
     List<UserDto> getAllUsers();
+
     User getOrThrow(Long userId);
+
     UserDto saveUser(UserDto userDto);
 
     UserDto updateUser(Long userId, UserDto userDto);

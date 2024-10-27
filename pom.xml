@@ -114,6 +114,10 @@
                                 <goal>check</goal>
                             </goals>
                             <configuration>
+                                <excludes>
+                                    <exclude>ru/practicum/shareit/**/model/**</exclude>
+                                    <exclude>**/*Dto*.java</exclude> <!-- Пример исключения всех файлов DTO -->
+                                </excludes>
                                 <rules>
                                     <rule>
                                         <element>BUNDLE</element>

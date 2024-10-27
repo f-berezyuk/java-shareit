@@ -12,6 +12,7 @@ import ru.practicum.shareit.booking.EBookingStatus;
 import ru.practicum.shareit.booking.storage.BookingRepository;
 import ru.practicum.shareit.item.dto.CommentDto;
 import ru.practicum.shareit.item.dto.ItemDto;
+import ru.practicum.shareit.item.exception.ItemNotFoundException;
 import ru.practicum.shareit.item.exception.UserNotAuthorizedException;
 import ru.practicum.shareit.item.model.Comment;
 import ru.practicum.shareit.item.model.Item;
@@ -20,7 +21,6 @@ import ru.practicum.shareit.item.storage.ItemRepository;
 import ru.practicum.shareit.user.UserMapper;
 import ru.practicum.shareit.user.UserService;
 import ru.practicum.shareit.user.dto.UserDto;
-import ru.practicum.shareit.user.exception.UserNotFoundException;
 import ru.practicum.shareit.user.model.User;
 
 @Service
@@ -57,7 +57,7 @@ public class ItemServiceImpl implements ItemService {
             return user.get();
         }
 
-        throw new UserNotFoundException("Предмет с идентификатором " + itemId + " не найден");
+        throw new ItemNotFoundException("Предмет с идентификатором " + itemId + " не найден");
     }
 
     @Override
