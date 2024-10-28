@@ -25,10 +25,10 @@ import ru.practicum.shareit.user.model.User;
 @Service
 @AllArgsConstructor
 public class ItemRequestServiceImpl implements ItemRequestService {
-    AnswersRepository answersRepository;
-    ItemRequestRepository requestRepository;
-    UserService userService;
-    ItemService itemService;
+    private final AnswersRepository answersRepository;
+    private final ItemRequestRepository requestRepository;
+    private final UserService userService;
+    private final ItemService itemService;
 
     @Override
     public ItemRequestDto createRequest(CreateItemRequest request, Long userId) {

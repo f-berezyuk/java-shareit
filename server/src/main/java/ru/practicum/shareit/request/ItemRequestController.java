@@ -21,7 +21,7 @@ import ru.practicum.shareit.request.model.ItemRequest;
 @RequestMapping(path = "/requests")
 @AllArgsConstructor
 public class ItemRequestController {
-    ItemRequestService requestService;
+    private final ItemRequestService requestService;
 
     @PostMapping
     public ItemRequestDto createRequest(@RequestHeader("X-Sharer-User-Id") Long userId,

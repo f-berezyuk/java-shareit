@@ -16,7 +16,7 @@ import ru.practicum.shareit.request.dto.CreateItemRequest;
 @RequestMapping(path = "/requests")
 @AllArgsConstructor
 public class ItemRequestController {
-    ItemRequestClient itemRequestClient;
+    private final ItemRequestClient itemRequestClient;
 
     @PostMapping
     public ResponseEntity<Object> createRequest(@RequestHeader("X-Sharer-User-Id") Long userId,
