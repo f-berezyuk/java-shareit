@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
+import org.springframework.test.util.ReflectionTestUtils;
 import ru.practicum.shareit.request.dto.CreateItemRequest;
 import ru.practicum.shareit.request.dto.GetRequestWithAnswersRsp;
 import ru.practicum.shareit.request.dto.ItemRequestDto;
@@ -44,6 +45,7 @@ public class ItemRequestControllerTest {
     @BeforeEach
     void setup() {
         MockitoAnnotations.openMocks(this);
+        ReflectionTestUtils.setField(controller, "requestService", requestService);
     }
 
     @Test
@@ -72,7 +74,6 @@ public class ItemRequestControllerTest {
     void testGetRequests() {
         Long userId = 1L;
         List<GetRequestWithAnswersRsp> responseList = List.of(new GetRequestWithAnswersRsp());
-
         when(requestService.getRequests(anyLong())).thenReturn(responseList);
 
         List<GetRequestWithAnswersRsp> result = controller.getRequests(userId);
